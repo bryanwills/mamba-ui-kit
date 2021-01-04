@@ -35,8 +35,8 @@ export class BaseComponent implements OnDestroy {
 	defaultInv = '-coolGray-100';
 	contrast = '-coolGray-900';
 	contrastInv = '-coolGray-200';
-	dark = '-gray-900';
-	light = '-gray-100';
+	dark = '-coolGay-900';
+	light = '-coolGray-50';
 
 	protected colorService: ColorService;
 	protected themeService: ThemeService;

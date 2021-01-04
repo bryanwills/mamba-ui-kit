@@ -1,0 +1,66 @@
+<section
+	class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20"
+>
+	<div
+		class="flex flex-col max-w-screen-lg overflow-hidden rounded shadow-sm lg:flex-row sm:mx-auto"
+		[ngClass]="['bg' + contrast, 'text' + defaultInv]"
+	>
+		<div class="relative lg:w-1/2">
+			<img
+				src="https://source.unsplash.com/random/480x360"
+				alt=""
+				class="object-cover w-full lg:absolute h-80 lg:h-full"
+			/>
+
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				[ngClass]="['text' + contrast]"
+				class="absolute top-0 bottom-0 right-0 hidden fill-current lg:block"
+				viewBox="0 0 386.213 3383.666"
+			>
+				<path
+					id="Path_1"
+					data-name="Path 1"
+					d="M8080,0l3383.666,386.213H8080Z"
+					transform="translate(0 11463.666) rotate(-90)"
+				/>
+			</svg>
+		</div>
+		<div
+			class="flex flex-col justify-center p-8 lg:p-16 lg:pl-10 lg:w-1/2"
+			[ngClass]="['bg' + contrast]"
+		>
+			<div>
+				<p
+					class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider uppercase rounded-full"
+					[ngClass]="['bg' + primaryDark, 'text' + primaryLight]"
+				>
+					Brand new
+				</p>
+			</div>
+			<h5 class="mb-3 text-3xl font-extrabold leading-none sm:text-4xl">
+				Your new ideal style
+			</h5>
+			<p class="mb-5">
+				<span class="font-bold">Lorem ipsum</span> dolor sit amet, consectetur adipiscing
+				elit. Etiam sem neque, molestie sit amet venenatis et, dignissim ut erat. Sed
+				aliquet velit id dui eleifend, sed consequat odio sollicitudin.
+			</p>
+			<div class="flex flex-wrap justify-center lg:justify-start">
+				<button
+					type="submit"
+					class="px-6 py-3 my-2 mr-2 font-semibold rounded"
+					[ngClass]="['bg' + primary, 'text' + contrast]"
+				>
+					Get started
+				</button>
+				<button
+					class="px-6 py-3 my-2 ml-2 border rounded"
+					[ngClass]="['text' + contrastInv, 'border' + neutral]"
+				>
+					Learn more
+				</button>
+			</div>
+		</div>
+	</div>
+</section>
