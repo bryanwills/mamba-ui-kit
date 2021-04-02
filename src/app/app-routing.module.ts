@@ -36,9 +36,10 @@ const routes: Routes = [
 @NgModule({
 	imports: [
 		RouterModule.forRoot(routes, {
-			preloadingStrategy: CustomPreloadingStrategy,
-			scrollPositionRestoration: 'enabled',
-		}),
+    preloadingStrategy: CustomPreloadingStrategy,
+    scrollPositionRestoration: 'enabled',
+    relativeLinkResolution: 'legacy'
+}),
 	],
 	exports: [RouterModule],
 })
