@@ -19,5 +19,8 @@
 		"module": "es2020",
 		"lib": ["es2018", "dom"]
 	},
+	"angularCompilerOptions": {
+		"strictTemplates": true
+	},
 	"include": ["src/**/*.ts", "test/**/*.ts"]
 }
