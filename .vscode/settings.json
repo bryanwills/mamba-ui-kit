@@ -4,5 +4,54 @@
 	"files.insertFinalNewline": true,
 	"css.validate": false,
 	"less.validate": false,
-	"scss.validate": false
+	"scss.validate": false,
+	"macros": {
+		"newComponent": [
+			// creates new html and ts files for a new component
+			// asks for folder (src/app/components/<folder>) and number of the component
+			// for example "feature" and "8" answers would create
+			// feature8.component.html and feature8.component.ts
+			// in src/app/components/feature/feature8
+			{
+				"javascript": [
+					"const folderName = await window.showInputBox({prompt: 'Folder name'})", // get the folder's name
+					"const componentNumber = await window.showInputBox({prompt: 'Component number'})", // get the component's name
+
+					"const we = new vscode.WorkspaceEdit();",
+
+					"const selectedFolder = vscode.workspace.workspaceFolders[0].uri.toString() + '/src/app/components/' + `${folderName}`;",
+					"const uriBase = `${selectedFolder}/${folderName + componentNumber}`;",
+
+					"const newHtmlFile = vscode.Uri.parse(`${uriBase}/${folderName + componentNumber}.component.html`);",
+					"const newTsFile = vscode.Uri.parse(`${uriBase}/${folderName + componentNumber}.component.ts`);",
+					"const newFiles = [newHtmlFile, newTsFile];",
+
+					"for (const newFile of newFiles) { let document = await we.createFile(newFile, { ignoreIfExists: false, overwrite: true });};",
+
+					"const tsTemplate = `import {Component, OnInit} from '@angular/core';",
+					"",
+					"import {BaseComponent} from '@shared/components/base/base.component';",
+					"",
+					"@Component({",
+					"selector: 'custom-${folderName + componentNumber}',",
+					"templateUrl: './${folderName + componentNumber}.component.html',",
+					"})",
+					"export class ${folderName.charAt(0).toUpperCase() + folderName.slice(1) + componentNumber}Component extends BaseComponent implements OnInit {",
+					"\tconstructor() {",
+					"\t\tsuper();",
+					"\t}",
+					"",
+					"\tngOnInit() {}",
+					"}",
+					"`;",
+
+					"await we.insert(newTsFile, new vscode.Position(0, 0), tsTemplate);",
+
+					"await vscode.workspace.applyEdit(we);",
+
+					"for (const newFile of newFiles) { let document = await vscode.workspace.openTextDocument(newFile); await document.save(); };"
+				]
+			}
+		]
+	}
 }
